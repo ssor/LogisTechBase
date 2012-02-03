@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Points>
+	<point>
+		<time>2011-08-03 18:39</time>
+		<latitude>39.7426466666667</latitude>
+		<longitude>116.330241666667</longitude>
+	</point>
+	<point>
+		<time>2011-08-03 18:40</time>
+		<latitude>39.6987341434814</latitude>
+		<longitude>116.330241666667</longitude>
+	</point>	
+	<point>
+		<time>2011-08-03 18:41</time>
+		<latitude>39.6487341434814</latitude>
+		<longitude>116.330241666667</longitude>
+	</point>		
+	<point>
+		<time>2011-08-03 18:42</time>
+		<latitude>39.6087341434814</latitude>
+		<longitude>116.330241666667</longitude>
+	</point>	
+	
+</Points>
