@@ -383,5 +383,7 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设�
         }
 
 
+
+
     }
 }

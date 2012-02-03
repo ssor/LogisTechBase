@@ -376,6 +376,12 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设�
             about.ShowDialog();
         }
 
+        private void 系统设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSysSettings frm = new frmSysSettings();
+            frm.ShowDialog();
+        }
+
 
     }
 }

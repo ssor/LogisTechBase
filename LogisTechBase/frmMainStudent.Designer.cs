@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainStudent));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem系统 = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出QToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MI网络通信实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMItem串口通信实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMItem网络通信实验 = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +43,6 @@
             this.gPS数据分析实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.地图操作实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MI条码实验 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi条形码打印机安装实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.一维条码实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.一维条形码编码实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.条码模块协议分析实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,9 +76,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslbNetState = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripMenuItem系统 = new System.Windows.Forms.ToolStripMenuItem();
-            this.系统设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.退出QToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +97,28 @@
             this.menuStrip1.Size = new System.Drawing.Size(792, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem系统
+            // 
+            this.toolStripMenuItem系统.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.系统设置ToolStripMenuItem,
+            this.退出QToolStripMenuItem});
+            this.toolStripMenuItem系统.Name = "toolStripMenuItem系统";
+            this.toolStripMenuItem系统.Size = new System.Drawing.Size(58, 21);
+            this.toolStripMenuItem系统.Text = "文件(&F)";
+            // 
+            // 系统设置ToolStripMenuItem
+            // 
+            this.系统设置ToolStripMenuItem.Name = "系统设置ToolStripMenuItem";
+            this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.系统设置ToolStripMenuItem.Text = "系统设置(&S)";
+            this.系统设置ToolStripMenuItem.Click += new System.EventHandler(this.系统设置ToolStripMenuItem_Click);
+            // 
+            // 退出QToolStripMenuItem
+            // 
+            this.退出QToolStripMenuItem.Name = "退出QToolStripMenuItem";
+            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.退出QToolStripMenuItem.Text = "退出(&Q)";
             // 
             // MI网络通信实验
             // 
@@ -174,29 +195,20 @@
             // MI条码实验
             // 
             this.MI条码实验.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi条形码打印机安装实验,
             this.一维条码实验ToolStripMenuItem,
             this.二维条码实验ToolStripMenuItem});
             this.MI条码实验.Name = "MI条码实验";
             this.MI条码实验.Size = new System.Drawing.Size(84, 21);
             this.MI条码实验.Text = "条码实验(&B)";
             // 
-            // tsmi条形码打印机安装实验
-            // 
-            this.tsmi条形码打印机安装实验.Name = "tsmi条形码打印机安装实验";
-            this.tsmi条形码打印机安装实验.Size = new System.Drawing.Size(196, 22);
-            this.tsmi条形码打印机安装实验.Text = "条形码打印机安装实验";
-            this.tsmi条形码打印机安装实验.Visible = false;
-            this.tsmi条形码打印机安装实验.Click += new System.EventHandler(this.tsmi条形码打印机安装实验_Click);
-            // 
             // 一维条码实验ToolStripMenuItem
             // 
             this.一维条码实验ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.一维条码读取实验ToolStripMenuItem,
             this.一维条形码编码实验ToolStripMenuItem,
-            this.条码模块协议分析实验ToolStripMenuItem,
-            this.一维条码读取实验ToolStripMenuItem});
+            this.条码模块协议分析实验ToolStripMenuItem});
             this.一维条码实验ToolStripMenuItem.Name = "一维条码实验ToolStripMenuItem";
-            this.一维条码实验ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.一维条码实验ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.一维条码实验ToolStripMenuItem.Text = "一维条码实验(&D)";
             // 
             // 一维条形码编码实验ToolStripMenuItem
@@ -226,7 +238,7 @@
             this.二维条码编码实验ToolStripMenuItem,
             this.二维条码解码实验ToolStripMenuItem1});
             this.二维条码实验ToolStripMenuItem.Name = "二维条码实验ToolStripMenuItem";
-            this.二维条码实验ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.二维条码实验ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.二维条码实验ToolStripMenuItem.Text = "二维条码实验(&T)";
             // 
             // 二维条码编码实验ToolStripMenuItem
@@ -255,8 +267,8 @@
             // tsmi1356MHzRFID系统实验
             // 
             this.tsmi1356MHzRFID系统实验.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.高频RFID协议实验ToolStripMenuItem,
-            this.高频RFIDToolStripMenuItem});
+            this.高频RFIDToolStripMenuItem,
+            this.高频RFID协议实验ToolStripMenuItem});
             this.tsmi1356MHzRFID系统实验.Name = "tsmi1356MHzRFID系统实验";
             this.tsmi1356MHzRFID系统实验.Size = new System.Drawing.Size(208, 22);
             this.tsmi1356MHzRFID系统实验.Text = "高频RFID系统实验(&F)";
@@ -342,8 +354,8 @@
             // MIZigbee实验
             // 
             this.MIZigbee实验.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.协议分析ToolStripMenuItem,
-            this.zigToolStripMenuItem});
+            this.zigToolStripMenuItem,
+            this.协议分析ToolStripMenuItem});
             this.MIZigbee实验.Name = "MIZigbee实验";
             this.MIZigbee实验.Size = new System.Drawing.Size(99, 21);
             this.MIZigbee实验.Text = "Zigbee实验(&Z)";
@@ -451,27 +463,6 @@
             this.tsslbNetState.Size = new System.Drawing.Size(32, 17);
             this.tsslbNetState.Text = "正常";
             // 
-            // toolStripMenuItem系统
-            // 
-            this.toolStripMenuItem系统.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.系统设置ToolStripMenuItem,
-            this.退出QToolStripMenuItem});
-            this.toolStripMenuItem系统.Name = "toolStripMenuItem系统";
-            this.toolStripMenuItem系统.Size = new System.Drawing.Size(59, 21);
-            this.toolStripMenuItem系统.Text = "系统(&T)";
-            // 
-            // 系统设置ToolStripMenuItem
-            // 
-            this.系统设置ToolStripMenuItem.Name = "系统设置ToolStripMenuItem";
-            this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.系统设置ToolStripMenuItem.Text = "系统设置(&S)";
-            // 
-            // 退出QToolStripMenuItem
-            // 
-            this.退出QToolStripMenuItem.Name = "退出QToolStripMenuItem";
-            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.退出QToolStripMenuItem.Text = "退出(&Q)";
-            // 
             // frmMainStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -486,7 +477,7 @@
             this.MinimizeBox = false;
             this.Name = "frmMainStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "物流信息试验平台(学生端)";
+            this.Text = "物流信息技术实验平台(学生端)";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -508,7 +499,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel tsslbNetState;
         private System.Windows.Forms.ToolStripMenuItem MIRFID实验;
-        private System.Windows.Forms.ToolStripMenuItem tsmi条形码打印机安装实验;
         private System.Windows.Forms.ToolStripMenuItem tsmi1356MHzRFID系统实验;
         private System.Windows.Forms.ToolStripMenuItem tsmi超高频RFID系统的操作实验;
         private System.Windows.Forms.ToolStripMenuItem 标签读取实验ToolStripMenuItem;

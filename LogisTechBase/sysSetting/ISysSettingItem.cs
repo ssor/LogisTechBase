@@ -8,8 +8,12 @@ namespace LogisTechBase
     public interface ISysSettingItem
     {
         //添加和清除控件
-        void addControls(Control.ControlCollection controlCollection);
-        void removeControls(Control.ControlCollection controlCollection);
+        void addControls();
+        void removeControls();
+
+        //设置更改
+        bool isChanged();
+        void saveChanges();
 
 
     }

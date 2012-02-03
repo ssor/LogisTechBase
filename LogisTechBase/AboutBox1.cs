@@ -12,13 +12,15 @@ namespace LogisTechBase
         public AboutBox1()
         {
             InitializeComponent();
-            this.Text = String.Format("关于 ");
+            this.Text = String.Format("物流信息技术实验平台");
 //            this.Text = String.Format("关于 {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("版本 {0}", AssemblyVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            //this.labelProductName.Text = AssemblyProduct;
+            this.labelVersion.Text = String.Format("{0}",AssemblyVersion);
+            //this.labelCopyright.Text = AssemblyCopyright;
+            //this.labelCompanyName.Text = AssemblyCompany;
+            //this.textBoxDescription.Text = @"    物流信息技术实验平台是基于物流技术实验箱开发的技术开发指导系统软件，
+//该系统通过对实验箱中各个模块的技术分析，使得实验箱使用者掌握该模块的基本使用和开发技术。";
+//            this.textBoxDescription.Text = AssemblyDescription;
         }
 
         #region 程序集属性访问器
@@ -100,5 +102,10 @@ namespace LogisTechBase
             }
         }
         #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

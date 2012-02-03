@@ -222,6 +222,8 @@
     <Compile Include="Socket\enumAsynSocketCode.cs" />
     <Compile Include="Socket\StateObject.cs" />
     <Compile Include="sysSetting\ISysSettingItem.cs" />
+    <Compile Include="sysSetting\sysSettingSerialPortBase.cs" />
+    <Compile Include="sysSetting\UHFSetting.cs" />
     <Compile Include="TcpIP\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
