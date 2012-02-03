@@ -99,10 +99,10 @@
     <Compile Include="BarCode\frmReadBar.Designer.cs">
       <DependentUpon>frmReadBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHFRead.cs">
+    <Compile Include="rfidCheck\frmHFRead.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHFRead.Designer.cs">
+    <Compile Include="rfidCheck\frmHFRead.Designer.cs">
       <DependentUpon>frmHFRead.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSysSettings.cs">
@@ -275,10 +275,10 @@
     <Compile Include="SerialPort\FrmSerialPort.Designer.cs">
       <DependentUpon>FrmSerialPort.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUHF.cs">
+    <Compile Include="rfidCheck\FrmUHF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUHF.Designer.cs">
+    <Compile Include="rfidCheck\FrmUHF.Designer.cs">
       <DependentUpon>FrmUHF.cs</DependentUpon>
     </Compile>
     <Compile Include="TcpIP\Frm_LockPara.cs">
@@ -300,7 +300,7 @@
     <EmbeddedResource Include="BarCode\frmReadBar.resx">
       <DependentUpon>frmReadBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHFRead.resx">
+    <EmbeddedResource Include="rfidCheck\frmHFRead.resx">
       <DependentUpon>frmHFRead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSysSettings.resx">
@@ -376,7 +376,7 @@
       <DependentUpon>FrmSerialPort.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUHF.resx">
+    <EmbeddedResource Include="rfidCheck\FrmUHF.resx">
       <DependentUpon>FrmUHF.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
