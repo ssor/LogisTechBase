@@ -105,10 +105,10 @@
     <Compile Include="rfidCheck\frmHFRead.Designer.cs">
       <DependentUpon>frmHFRead.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSysSettings.cs">
+    <Compile Include="sysSetting\frmSysSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSysSettings.Designer.cs">
+    <Compile Include="sysSetting\frmSysSettings.Designer.cs">
       <DependentUpon>frmSysSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="GIS\CustomMarkers\GMapMarkerRect.cs" />
@@ -221,6 +221,7 @@
     <Compile Include="Socket\AsynSocketProcessMsg.cs" />
     <Compile Include="Socket\enumAsynSocketCode.cs" />
     <Compile Include="Socket\StateObject.cs" />
+    <Compile Include="sysSetting\ISysSettingItem.cs" />
     <Compile Include="TcpIP\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,7 +304,7 @@
     <EmbeddedResource Include="rfidCheck\frmHFRead.resx">
       <DependentUpon>frmHFRead.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSysSettings.resx">
+    <EmbeddedResource Include="sysSetting\frmSysSettings.resx">
       <DependentUpon>frmSysSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GIS\Forms\MainForm.resx">
