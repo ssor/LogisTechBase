@@ -8,20 +8,23 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using Config;
+using RfidReader;
 
 namespace LogisTechBase.rfidCheck
 {
-    public partial class frmEditEPC : Form
+    public partial class frmEditEPC : Form, IRFIDHelperSubscriber
     {
         InvokeDic _UpdateList = new InvokeDic();
-        RFIDHelper _RFIDHelper = new RFIDHelper();
+        //RFIDHelper _RFIDHelper = new RFIDHelper();
         ISerialPortConfigItem ispc =
-              SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.超高频RFID串口设置);
-        SerialPort comport = new SerialPort();
-        bool bEPCOK = false;
+              ConfigManager.GetConfigItem(SerialPortConfigItemName.超高频RFID串口设置);
+        SerialPort comport = null;
+        IDataTransfer dataTransfer = null;
+        Rmu900RFIDHelper rmu900Helper = null;
+        //bool bEPCOK = false;
         // 记录当前返回写入数据成功提示时的操作意图，区分写入EPC还是密码成功
         // 0 为epc，1 为密码
-        int nSingleWriteDataState = 0;
         string tagUII = string.Empty;
 
         public frmEditEPC()
@@ -29,18 +32,27 @@ namespace LogisTechBase.rfidCheck
             InitializeComponent();
             this.lblSecretConfirm.Text = "";
             this.statusLabel.Text = "";
-            string secret = ConfigManager.GetLockMemSecret();
-            if (null == secret)
+            //string secret = ConfigManager.GetLockMemSecret();
+            //if (null == secret)
+            //{
+            //    secret = "12345678";
+            //}
+            //this.txtSecret.Text = secret;
+            //this.txtSecretAgain.Text = secret;
+
+            try
             {
-                secret = "12345678";
+
+                comport = new SerialPort(ispc.GetItemValue(enumSerialPortConfigItem.串口名称), int.Parse(ispc.GetItemValue(enumSerialPortConfigItem.波特率)), Parity.None, 8, StopBits.One);
+                ((SerialPortDataTransfer)dataTransfer).Comport = comport;
+                rmu900Helper = new Rmu900RFIDHelper(dataTransfer);
+                rmu900Helper.Subscribe(this);
+                dataTransfer.AddParser(rmu900Helper);
             }
-            this.txtSecret.Text = secret;
-            this.txtSecretAgain.Text = secret;
-            comport.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
-            //使得Helper类可以向串口中写入数据
-            _RFIDHelper.evtWriteToSerialPort += new deleVoid_Byte_Func(RFIDHelper_evtWriteToSerialPort);
-            // 处理当前操作的状态
-            _RFIDHelper.evtCardState += new deleVoid_RFIDEventType_Object_Func(_RFIDHelper_evtCardState);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "异常提示");
+            }
 
             this.lblTip.Text = "";
         }
@@ -65,20 +77,7 @@ namespace LogisTechBase.rfidCheck
                 MessageBox.Show(ex.Message);
             }
         }
-        private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            try
-            {
-                int n = comport.BytesToRead;//n为返回的字节数
-                byte[] buf = new byte[n];//初始化buf 长度为n
-                comport.Read(buf, 0, n);//读取返回数据并赋值到数组
-                _RFIDHelper.Parse(buf);
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string Value = string.Empty;
@@ -113,117 +112,7 @@ namespace LogisTechBase.rfidCheck
                         }
             this.lblTip.Text = Value;
         }
-        void _RFIDHelper_evtCardState(RFIDEventType eventType, object o)
-        {
-            string value = "";
-            switch ((int)eventType)
-            {
-                case (int)RFIDEventType.RMU_Exception:
-                    if (null != o)
-                    {
-
-                    }
-                    value = "设备尚未准备就绪！";
-                    //MessageBox.Show("设备尚未准备就绪！");
-                    UpdateStatus(value);
-                    break;
-
-                case (int)RFIDEventType.RMU_CardIsReady:
-                    _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_InventoryAnti3, RFIDEventType.RMU_InventoryAnti);
-                    break;
-
-                case (int)RFIDEventType.RMU_InventoryAnti:
-                    if (o != null && (string)o != "ok")
-                    {
-                        value = RFIDHelper.GetEPCFormUII((string)o);
-
-                        _RFIDHelper.StopCallback();
-                        _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_StopGet, RFIDEventType.RMU_StopGet);
-                    }
-                    if (this.textBox1.InvokeRequired)
-                    {
-                        this.textBox1.Invoke(new deleUpdateContorl(UpdateEPCtxtBox), value);
-                    }
-                    else
-                    {
-                        UpdateEPCtxtBox(value);
-                    }
-                    break;
-                case (int)RFIDEventType.RMU_SingleWriteData:
-                    if (nSingleWriteDataState == 0)
-                    {
-                        if (o == null)
-                        {
-                            //MessageBox.Show("更改标签EPC失败");
-                            value = "更改标签EPC失败";
-                        }
-                        else
-                        {
-                            value = "更改标签EPC成功";
-                            //MessageBox.Show("更改标签EPC成功");
-                        }
-                    }
-                    if (nSingleWriteDataState == 1)
-                    {
-                        if (o == null)
-                        {
-                            value = "标签锁定失败";
-                            //MessageBox.Show("标签锁定失败");
-                        }
-                        else
-                        {
-                            value = "标签( " + (string)o + " )锁定成功 ";
-
-                            //MessageBox.Show(value);
-                        }
-                    }
-                    UpdateStatus(value);
-                    break;
-                case (int)RFIDEventType.RMU_Inventory:
-                    if (null == o)
-                    {
-                        value = "正在检测周围标签...";
-                    }
-                    else
-                    {
-                        _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_StopGet, RFIDEventType.RMU_StopGet);
-                        tagUII = (string)o;
-                        value = "检测到标签：" + tagUII;
-                    }
-                    UpdateStatus(value);
-                    break;
-                case (int)RFIDEventType.RMU_StopGet:
-                    _RFIDHelper.RmuLockTagReserverdEpcTid("00000000", tagUII);
-
-                    break;
-                case (int)RFIDEventType.RMU_LockMem:
-                    {
-                        if (null == o)
-                        {
-                            value = "标签锁定失败 ";
-                            //MessageBox.Show("标签锁定失败 ");
-                        }
-                        else if ((string)o == "ok")//写入密码
-                        {
-                            value = "写入密码...";
-                            Debug.WriteLine(string.Format(" 写入密码->RMU_LockMem {0} {1}", DateTime.Now.ToLongTimeString(), DateTime.Now.Millisecond.ToString()));
-                            string _initialPwd = RFIDHelper.PwdCheck(null);
-                            List<string> commands = new List<string>();
-                            string strPwdT = RFIDHelper.PwdCheck(txtSecret.Text);
-                            string pwdTH4 = strPwdT.Substring(0, 4);//前四位 
-                            string pwdTT4 = strPwdT.Substring(4, 4);//后四位 
-                            List<string> commandSetSecret1 = RFIDHelper.RmuWriteDataCommandCompose(RMU_CommandType.RMU_SingleWriteData, _initialPwd, 0, 2, pwdTH4, null);
-                            List<string> commandSetSecret2 = RFIDHelper.RmuWriteDataCommandCompose(RMU_CommandType.RMU_SingleWriteData, pwdTH4 + _initialPwd, 0, 3, pwdTT4, null);
-                            commands.AddRange(commandSetSecret1);
-                            commands.AddRange(commandSetSecret2);
-                            this.nSingleWriteDataState = 1;
-                            _RFIDHelper.SendCommand(commands, RFIDEventType.RMU_SingleWriteData, false);
-                        }
-                    }
-                    UpdateStatus(value);
-                    break;
-            }
-        }
+        
         void UpdateStatus(string value)
         {
             if (this.statusLabel.InvokeRequired)
@@ -235,23 +124,21 @@ namespace LogisTechBase.rfidCheck
                 UpdateStatusLable(value);
             }
         }
-        void UpdateEPCtxtBox(string value)
+        void UpdateEPCtxtBox(object o)
         {
-            if (!_UpdateList.CheckItem("UpdateTipLable"))
+            deleControlInvoke dele = delegate(object oEpc)
             {
-                return;
-            }
-            _UpdateList.SetItem("UpdateTipLable", false);
-
-            this.textBox1.Text = value;
-
-            _UpdateList.SetItem("UpdateTipLable", true);
+                string value = oEpc as string;
+                this.textBox1.Text = value;
+            };
+            this.Invoke(dele, o);
         }
         // read tag epc
         private void button2_Click(object sender, EventArgs e)
         {
-            _RFIDHelper.StartCallback();
-            _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_GetStatus, RFIDEventType.RMU_CardIsReady);
+            rmu900Helper.StartInventoryOnce();
+            //_RFIDHelper.StartCallback();
+            //_RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_GetStatus, RFIDEventType.RMU_CardIsReady);
 
         }
         // write EPC to Tag
@@ -263,15 +150,17 @@ namespace LogisTechBase.rfidCheck
                 MessageBox.Show("EPC长度应为24位，且不能包含除 a-f 和 A-F之外的字母！");
                 return;
             }
-            List<string> CommandWriteData = RFIDHelper.RmuWriteDataCommandCompose(RMU_CommandType.RMU_SingleWriteData,
-                                                                    null,
-                                                                    1,
-                                                                    2,
-                                                                    strID,
-                                                                    null);
-            this.nSingleWriteDataState = 0;
-            _RFIDHelper.StartCallback();
-            _RFIDHelper.SendCommand(CommandWriteData, RFIDEventType.RMU_SingleWriteData,false);
+            //List<string> CommandWriteData = RFIDHelper.RmuWriteDataCommandCompose(RMU_CommandType.RMU_SingleWriteData,
+            //                                                        null,
+            //                                                        1,
+            //                                                        2,
+            //                                                        strID,
+            //                                                        null);
+            //this.nSingleWriteDataState = 0;
+            //_RFIDHelper.StartCallback();
+            //_RFIDHelper.SendCommand(CommandWriteData, RFIDEventType.RMU_SingleWriteData,false);
+            this.rmu900Helper.StartWriteEpc(this.textBox1.Text);
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -312,8 +201,8 @@ namespace LogisTechBase.rfidCheck
 
         private void btnLockTag_Click(object sender, EventArgs e)
         {
-            _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_Inventory,
-                                    RFIDEventType.RMU_Inventory);
+            //_RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_Inventory,
+            //                        RFIDEventType.RMU_Inventory);
         }
         void UpdateStatusLable(string value)
         {
@@ -364,6 +253,17 @@ namespace LogisTechBase.rfidCheck
                 this.lblSecretConfirm.Text = "密码不一致";
                 this.lblSecretConfirm.ForeColor = Color.Red;
                 btnLockTag.Enabled = false;
+            }
+        }
+
+        public  void NewMessageArrived()
+        {
+            string r1 = rmu900Helper.ChekcInventoryOnce();
+            if (r1 != string.Empty)
+            {
+                Debug.WriteLine("读取到标签 " + r1);
+                AudioAlert.PlayAlert();
+                this.UpdateEPCtxtBox(r1);
             }
         }
     }

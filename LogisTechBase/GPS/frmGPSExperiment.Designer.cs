@@ -118,32 +118,33 @@
             // 
             // btnSerialPortConfig
             // 
-            this.btnSerialPortConfig.Location = new System.Drawing.Point(699, 18);
+            this.btnSerialPortConfig.Location = new System.Drawing.Point(775, 18);
             this.btnSerialPortConfig.Name = "btnSerialPortConfig";
-            this.btnSerialPortConfig.Size = new System.Drawing.Size(75, 23);
+            this.btnSerialPortConfig.Size = new System.Drawing.Size(24, 23);
             this.btnSerialPortConfig.TabIndex = 20;
             this.btnSerialPortConfig.Text = "串口设置";
             this.btnSerialPortConfig.UseVisualStyleBackColor = true;
+            this.btnSerialPortConfig.Visible = false;
             this.btnSerialPortConfig.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnOff
             // 
             this.btnOff.Enabled = false;
-            this.btnOff.Location = new System.Drawing.Point(627, 18);
+            this.btnOff.Location = new System.Drawing.Point(695, 18);
             this.btnOff.Name = "btnOff";
-            this.btnOff.Size = new System.Drawing.Size(49, 23);
+            this.btnOff.Size = new System.Drawing.Size(85, 23);
             this.btnOff.TabIndex = 19;
-            this.btnOff.Text = "断 开";
+            this.btnOff.Text = "断开(&D)";
             this.btnOff.UseVisualStyleBackColor = true;
             this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
             // 
             // btnOn
             // 
-            this.btnOn.Location = new System.Drawing.Point(536, 18);
+            this.btnOn.Location = new System.Drawing.Point(597, 18);
             this.btnOn.Name = "btnOn";
             this.btnOn.Size = new System.Drawing.Size(85, 23);
             this.btnOn.TabIndex = 18;
-            this.btnOn.Text = "连接GPS";
+            this.btnOn.Text = "连接GPS(&C)";
             this.btnOn.UseVisualStyleBackColor = true;
             this.btnOn.Click += new System.EventHandler(this.btnOn_Click);
             // 
@@ -183,9 +184,9 @@
             // 
             this.btnGoto.Location = new System.Drawing.Point(388, 18);
             this.btnGoto.Name = "btnGoto";
-            this.btnGoto.Size = new System.Drawing.Size(75, 23);
+            this.btnGoto.Size = new System.Drawing.Size(83, 23);
             this.btnGoto.TabIndex = 19;
-            this.btnGoto.Text = "去此位置";
+            this.btnGoto.Text = "去此位置(&G)";
             this.btnGoto.UseVisualStyleBackColor = true;
             this.btnGoto.Click += new System.EventHandler(this.btnGoto_Click);
             // 
@@ -295,9 +296,9 @@
             // 
             this.button1.Location = new System.Drawing.Point(16, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 28);
+            this.button1.Size = new System.Drawing.Size(96, 28);
             this.button1.TabIndex = 22;
-            this.button1.Text = "导入点数据";
+            this.button1.Text = "导入点数据(&I)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -317,9 +318,9 @@
             // 
             this.btnShowPoint.Location = new System.Drawing.Point(16, 63);
             this.btnShowPoint.Name = "btnShowPoint";
-            this.btnShowPoint.Size = new System.Drawing.Size(85, 28);
+            this.btnShowPoint.Size = new System.Drawing.Size(96, 28);
             this.btnShowPoint.TabIndex = 24;
-            this.btnShowPoint.Text = "显示到地图";
+            this.btnShowPoint.Text = "显示到地图(&S)";
             this.btnShowPoint.UseVisualStyleBackColor = true;
             this.btnShowPoint.Click += new System.EventHandler(this.btnShowPoint_Click);
             // 
@@ -376,11 +377,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(745, 627);
+            this.button2.Location = new System.Drawing.Point(739, 627);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(81, 23);
             this.button2.TabIndex = 25;
-            this.button2.Text = "退出";
+            this.button2.Text = "退出(&X)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

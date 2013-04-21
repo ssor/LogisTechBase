@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;MONOdisabled; SQLite</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;MONOdisabled; SQLite;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -53,24 +53,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dll\BarcodeLib.dll</HintPath>
     </Reference>
-    <Reference Include="BSE.Windows.Forms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=x86">
+    <Reference Include="fastJSON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dll\BSE.Windows.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="GMap.NET.Core, Version=1.5.4.3, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dll\GMap.NET.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="GMap.NET.WindowsForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dll\GMap.NET.WindowsForms.dll</HintPath>
+      <HintPath>..\Dll\fastJSON.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dll\System.Data.SQLite.DLL</HintPath>
-    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -99,39 +87,36 @@
     <Compile Include="BarCode\frmReadBar.Designer.cs">
       <DependentUpon>frmReadBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="GPS\frmGPSOnMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GPS\frmGPSOnMap.Designer.cs">
+      <DependentUpon>frmGPSOnMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GPS\frmGPSReceiver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GPS\frmGPSReceiver.Designer.cs">
+      <DependentUpon>frmGPSReceiver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Public\HttpDownloader.cs" />
     <Compile Include="rfidCheck\frmHFRead.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="rfidCheck\frmHFRead.Designer.cs">
       <DependentUpon>frmHFRead.cs</DependentUpon>
     </Compile>
+    <Compile Include="Public\ConfigDB.cs" />
+    <Compile Include="rfidCheck\rfidOperate\AudioAlert.cs" />
+    <Compile Include="rfidCheck\rfidOperate\IDataTransfer.cs" />
+    <Compile Include="rfidCheck\rfidOperate\Rmu900RFIDHelper.cs" />
+    <Compile Include="rfidCheck\rfidOperate\SerialPortDataTransfer.cs" />
     <Compile Include="sysSetting\frmSysSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="sysSetting\frmSysSettings.Designer.cs">
       <DependentUpon>frmSysSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="GIS\CustomMarkers\GMapMarkerRect.cs" />
-    <Compile Include="GIS\CustomMarkers\GMapMarkerPoint.cs" />
-    <Compile Include="GIS\Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GIS\Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GIS\Forms\StaticImage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GIS\Forms\StaticImage.Designer.cs">
-      <DependentUpon>StaticImage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GIS\Source\Map.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GIS\Source\IPHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GIS\Source\SQLiteIpCache.cs" />
     <Compile Include="Public\configManager.cs" />
     <Compile Include="Public\encrypt.cs" />
     <Compile Include="Public\InvokeDic.cs" />
@@ -146,7 +131,6 @@
     <Compile Include="Public\PubDelegate.cs" />
     <Compile Include="Public\SerialPortConfigItem.cs">
     </Compile>
-    <Compile Include="Public\SQLiteHelper.cs" />
     <Compile Include="Public\SyntaxRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -165,14 +149,6 @@
     <Compile Include="rfidCheck\CheckBase\CheckPerson.cs" />
     <Compile Include="rfidCheck\CheckBase\CheckRecord.cs" />
     <Compile Include="rfidCheck\CheckBase\person.cs" />
-    <Compile Include="rfidCheck\CheckBase\RFIDHelper.cs" />
-    <Compile Include="rfidCheck\CheckBase\RFID_EPCWriter.cs" />
-    <Compile Include="rfidCheck\FrmCheckStatistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="rfidCheck\FrmCheckStatistics.Designer.cs">
-      <DependentUpon>FrmCheckStatistics.cs</DependentUpon>
-    </Compile>
     <Compile Include="rfidCheck\frmEditEPC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,7 +181,6 @@
     </Compile>
     <Compile Include="rfidCheck\rfidCheck_CheckOn.cs" />
     <Compile Include="SerialPort\BarcodeCommandItem.cs" />
-    <Compile Include="SerialPort\CommSerialPort.cs" />
     <Compile Include="SerialPort\GPRSCommandItem.cs" />
     <Compile Include="SerialPort\HFCommandItem.cs" />
     <Compile Include="SerialPort\SerialPortConfig.cs">
@@ -260,12 +235,6 @@
     <Compile Include="TcpIP\TCPIP S.Designer.cs">
       <DependentUpon>TCPIP S.cs</DependentUpon>
     </Compile>
-    <Compile Include="GPS\frmGPSExperiment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GPS\frmGPSExperiment.Designer.cs">
-      <DependentUpon>frmGPSExperiment.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,26 +272,23 @@
     <EmbeddedResource Include="BarCode\frmReadBar.resx">
       <DependentUpon>frmReadBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GPS\frmGPSOnMap.resx">
+      <DependentUpon>frmGPSOnMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GPS\frmGPSReceiver.resx">
+      <DependentUpon>frmGPSReceiver.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rfidCheck\frmHFRead.resx">
       <DependentUpon>frmHFRead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sysSetting\frmSysSettings.resx">
       <DependentUpon>frmSysSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GIS\Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GIS\Forms\StaticImage.resx">
-      <DependentUpon>StaticImage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="QRCode\frm2DBarcodeDecode.resx">
       <DependentUpon>frm2DBarcodeDecode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QRCode\frm2DBarcodeEncode.resx">
       <DependentUpon>frm2DBarcodeEncode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rfidCheck\FrmCheckStatistics.resx">
-      <DependentUpon>FrmCheckStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rfidCheck\frmEditEPC.resx">
       <DependentUpon>frmEditEPC.cs</DependentUpon>
@@ -367,10 +333,6 @@
       <DependentUpon>TCPIP S.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GPS\frmGPSExperiment.resx">
-      <DependentUpon>frmGPSExperiment.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -399,6 +361,9 @@
       <DependentUpon>frmMainStudent.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Zigbee\frmEnvironmentMonitoring.resx">
+      <DependentUpon>frmEnvironmentMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -414,6 +379,7 @@
     </Compile>
     <Compile Include="Socket\SynchronousSocketClient.cs" />
     <Compile Include="Socket\SynchronousSocketListener.cs" />
+    <Compile Include="XmlHelper.cs" />
     <Compile Include="Zigbee\CurveInfo.cs" />
     <Compile Include="Zigbee\frmZigbeeGraph.cs">
       <SubType>Form</SubType>
@@ -428,11 +394,17 @@
     <Compile Include="frmMainStudent.Designer.cs">
       <DependentUpon>frmMainStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Zigbee\frmEnvironmentMonitoring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zigbee\frmEnvironmentMonitoring.Designer.cs">
+      <DependentUpon>frmEnvironmentMonitoring.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="5.ico" />
     <Content Include="BarCode\Barcode.ico" />
-    <Content Include="GIS\Resources\ImageReady.ico" />
+    <Content Include="bin\Debug\alert.wav" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -466,6 +438,24 @@
       <Project>{2541686B-1673-43BF-AF89-3163945DB009}</Project>
       <Name>ZedGraph</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="ShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,10 +12,10 @@ namespace LogisTechBase
         public AboutBox1()
         {
             InitializeComponent();
-            this.Text = String.Format("物流信息技术实验平台");
+            //this.Text = String.Format("物流信息技术实验平台");
 //            this.Text = String.Format("关于 {0}", AssemblyTitle);
             //this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("{0}",AssemblyVersion);
+            //this.labelVersion.Text = String.Format("{0}",AssemblyVersion);
             //this.labelCopyright.Text = AssemblyCopyright;
             //this.labelCompanyName.Text = AssemblyCompany;
             //this.textBoxDescription.Text = @"    物流信息技术实验平台是基于物流技术实验箱开发的技术开发指导系统软件，

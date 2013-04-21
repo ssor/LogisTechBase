@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LogisTechBase.rfidCheck;
+using Config;
 
 namespace LogisTechBase
 {
@@ -14,7 +15,21 @@ namespace LogisTechBase
         public frmMain()
         {
             InitializeComponent();
+            Color c = Color.FromArgb(232, 245, 251);
+            this.BackColor = c;
+            this.axShockwaveFlash1.BGColor = "e8f5fb";
+            //this.axShockwaveFlash1.BGColor = "96d3fd";
 
+            //this.menuStrip1.BackColor = c;
+            //this.statusStrip1.BackColor = c;
+            this.Shown += new EventHandler(frmMain_Shown);
+
+        }
+
+        void frmMain_Shown(object sender, EventArgs e)
+        {
+            string path = Application.StartupPath;
+            this.axShockwaveFlash1.Movie = path + @"\flash.swf";
         }
 
         private void lbtnGis_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -39,7 +54,7 @@ namespace LogisTechBase
             //SerialPortConfigItem spci = 
             //    SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.CommonSerialPortConfig);
             SerialPortConfigItem spci =
-                SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.常用串口设置);
+                ConfigManager.GetConfigItem(SerialPortConfigItemName.常用串口设置);
             FrmSerialPort frmSP = new FrmSerialPort(spci);
             //frmSP.flag = 0;//串口基本实验
             frmSP.Text = "串口通信基础实验";
@@ -53,14 +68,14 @@ namespace LogisTechBase
 
         private void tsmiGPS通讯实验_Click(object sender, EventArgs e)
         {
-            frmGPSExperiment frmGps = new frmGPSExperiment();
-            frmGps.ShowDialog();
+            //frmGPSExperiment frmGps = new frmGPSExperiment();
+            //frmGps.ShowDialog();
         }
 
         private void tSMItem上位机控制GSMGPRS模块基本实验_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-    SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
+    ConfigManager.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
             GPRSCommandItem ci = new GPRSCommandItem();
             FrmSerialPort frmSP = new FrmSerialPort(ci, spci);
             frmSP.Text = "上位机控制GSM/GPRS模块基本实验";
@@ -71,7 +86,7 @@ namespace LogisTechBase
         private void TSMItem上位机控制GSMGPRS模块短信收发实验_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-    SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
+    ConfigManager.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
             FrmSerialPort frmSP = new FrmSerialPort(spci);
             frmSP.Text = "上位机控制GSM/GPRS模块短信收发实验";
             //frmSP.flag = 2;//上位机控制GSM/GPRS模块基本实验
@@ -82,7 +97,7 @@ namespace LogisTechBase
         private void tsmi上位机控制GPRS通话实验_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-    SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
+    ConfigManager.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
             FrmSerialPort frmSP = new FrmSerialPort(spci);
             frmSP.Text = "上位机控制GSM/GPRS模块通话基本实验";
             //frmSP.flag = 3;//上位机控制GSM/GPRS模块通话基本实验
@@ -93,7 +108,7 @@ namespace LogisTechBase
         private void tsmi上位机控制GPRS进行数据无线传输试验_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-    SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
+    ConfigManager.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
             FrmSerialPort frmSP = new FrmSerialPort(spci);
             frmSP.Text = "上位机控制GSM/GPRS进行无线数据传输实验";
             //frmSP.flag = 4;//上位机控制GSM/GPRS进行无线数据传输实验
@@ -122,7 +137,7 @@ namespace LogisTechBase
         private void 通信分析试验ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-    SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.超高频RFID串口设置);
+    ConfigManager.GetConfigItem(SerialPortConfigItemName.超高频RFID串口设置);
             UhfCommandItem uhfItem = new UhfCommandItem();
             FrmSerialPort frmSP = new FrmSerialPort(uhfItem, spci);
             frmSP.SetShowDataStyle(SerialPortDataStyle.Hex);
@@ -172,7 +187,7 @@ namespace LogisTechBase
         private void 标签分发ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmRfidCheck_Write frmW = new FrmRfidCheck_Write();
-            frmW.Show();
+            frmW.ShowDialog();
         }
 
         private void 考勤学生端ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,8 +198,8 @@ namespace LogisTechBase
 
         private void tsmi地图的操作实验_Click(object sender, EventArgs e)
         {
-            MapMainForm mmf = new MapMainForm();
-            mmf.Show();
+            //MapMainForm mmf = new MapMainForm();
+            //mmf.Show();
         }
 
         private void 串口参数ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -210,8 +225,8 @@ namespace LogisTechBase
 
         private void 考勤信息统计ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCheckStatistics fcs = new FrmCheckStatistics();
-            fcs.ShowDialog();
+            //FrmCheckStatistics fcs = new FrmCheckStatistics();
+            //fcs.ShowDialog();
         }
 
         private void 建立TCPIP服务器ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -237,20 +252,20 @@ namespace LogisTechBase
 
         private void 地图操作实验ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MapMainForm mmf = new MapMainForm();
-            mmf.Show();
+            //MapMainForm mmf = new MapMainForm();
+            //mmf.Show();
         }
 
         private void zigToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmZigbeeGraph fzigbee = new frmZigbeeGraph();
-            fzigbee.Show();
+            fzigbee.ShowDialog();
         }
 
         private void 协议分析ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-    SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.Zigbee模块串口设置);
+    ConfigManager.GetConfigItem(SerialPortConfigItemName.Zigbee模块串口设置);
             FrmSerialPort frmSP = new FrmSerialPort(spci);
             frmSP.SetShowDataStyle(SerialPortDataStyle.Hex);
             //frmSP.flag = 0;//串口基本实验
@@ -271,7 +286,7 @@ namespace LogisTechBase
         private void tsmi条码识别实验_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.条码模块);
+ConfigManager.GetConfigItem(SerialPortConfigItemName.条码模块);
             BarcodeCommandItem item = new BarcodeCommandItem();
             FrmSerialPort frmSP = new FrmSerialPort(item, spci);
             frmSP.Text = "条码模块协议分析实验";
@@ -287,7 +302,7 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.条码模块);
         private void 高频RFID协议实验ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.高频RFID串口设置);
+ConfigManager.GetConfigItem(SerialPortConfigItemName.高频RFID串口设置);
             HFCommandItem item = new HFCommandItem();
             FrmSerialPort frmSP = new FrmSerialPort(item, spci);
             frmSP.Text = "高频RFID协议分析实验";
@@ -321,7 +336,7 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.高频RFID串口设�
         private void 条码模块协议分析实验ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.条码模块);
+ConfigManager.GetConfigItem(SerialPortConfigItemName.条码模块);
             BarcodeCommandItem item = new BarcodeCommandItem();
             FrmSerialPort frmSP = new FrmSerialPort(item, spci);
             frmSP.Text = "条码模块协议分析实验";
@@ -349,7 +364,7 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.条码模块);
         private void gPRS实验ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SerialPortConfigItem spci =
-SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
+ConfigManager.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
             GPRSCommandItem ci = new GPRSCommandItem();
             FrmSerialPort frmSP = new FrmSerialPort(ci, spci);
             frmSP.Text = "GSM/GPRS模块协议分析实验";
@@ -366,7 +381,8 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设�
 
         private void 地图操作实验ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            frmGPSExperiment frmGps = new frmGPSExperiment();
+            //frmGPSExperiment frmGps = new frmGPSExperiment();
+            frmGPSOnMap frmGps = new frmGPSOnMap();
             frmGps.ShowDialog();
         }
 
@@ -379,6 +395,37 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设�
         private void 系统设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSysSettings frm = new frmSysSettings();
+            frm.ShowDialog();
+        }
+
+        private void gPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGPSReceiver frm = new frmGPSReceiver();
+            frm.ShowDialog();
+        }
+
+        private void 退出QToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+ 
+
+        private void gISGPS数据采集与分析管理系统GToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGPSReceiver frm = new frmGPSReceiver();
+            frm.ShowDialog();
+        }
+
+        private void gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmGPSMonitoring frm = new frmGPSMonitoring();
+            //frm.ShowDialog();
+        }
+
+        private void 仓库环境监测管理系统MToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEnvironmentMonitoring frm = new frmEnvironmentMonitoring();
             frm.ShowDialog();
         }
 

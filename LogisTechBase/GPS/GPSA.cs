@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
+using Config;
 
 
 namespace LogisTechBase
@@ -26,7 +27,7 @@ namespace LogisTechBase
         NMEA2OSG OSGconv = new NMEA2OSG();
 
         ISerialPortConfigItem ispci =
-            SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GPS串口设置);
+            ConfigManager.GetConfigItem(SerialPortConfigItemName.GPS串口设置);
             //SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GPSSerialPortConfig);
         //ISerialPortConfigItem ispci = SerialPortConfigItem.GetGPSConfigItem();
 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Config;
 
 namespace LogisTechBase
 {
@@ -56,7 +57,7 @@ namespace LogisTechBase
 
         void frmSysSettings_Shown(object sender, EventArgs e)
         {
-            ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.常用串口设置);
+            ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.常用串口设置);
 
             this.settingItem = new sysSettingSerialPortBase(this.Controls, "常用参数设置", ispci, frmSysSettings_Click);
             this.settingItem.addControls();
@@ -97,14 +98,14 @@ namespace LogisTechBase
                 TreeNode node = e.Node;
                 if (node.Name == "超高频RFID")
                 {
-                    ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.超高频RFID串口设置);
+                    ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.超高频RFID串口设置);
                     this.settingItem = new sysSettingSerialPortBase(this.Controls, "超高频RFID串口参数设置", ispci, frmSysSettings_Click);
                     this.settingItem.addControls();
                     return;
                 }
                 if (node.Name == "高频RFID")
                 {
-                    ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.高频RFID串口设置);
+                    ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.高频RFID串口设置);
 
                     this.settingItem = new sysSettingSerialPortBase(this.Controls, "高频RFID串口参数设置", ispci, frmSysSettings_Click);
                     this.settingItem.addControls();
@@ -112,7 +113,7 @@ namespace LogisTechBase
                 }
                 if (node.Name == "GPS模块")
                 {
-                    ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GPS串口设置);
+                    ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.GPS串口设置);
 
                     this.settingItem = new sysSettingSerialPortBase(this.Controls, "GPS模块串口参数设置", ispci, frmSysSettings_Click);
                     this.settingItem.addControls();
@@ -120,7 +121,7 @@ namespace LogisTechBase
                 }
                 if (node.Name == "GSM模块")
                 {
-                    ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
+                    ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.GSM模块串口设置);
 
                     this.settingItem = new sysSettingSerialPortBase(this.Controls, "GSM模块串口参数设置", ispci, frmSysSettings_Click);
                     this.settingItem.addControls();
@@ -128,7 +129,7 @@ namespace LogisTechBase
                 }
                 if (node.Name == "Zigbee模块")
                 {
-                    ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.Zigbee模块串口设置);
+                    ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.Zigbee模块串口设置);
 
                     this.settingItem = new sysSettingSerialPortBase(this.Controls, "Zigbee模块串口参数设置", ispci, frmSysSettings_Click);
                     this.settingItem.addControls();
@@ -136,7 +137,7 @@ namespace LogisTechBase
                 }
                 if (node.Name == "条码模块")
                 {
-                    ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.条码模块);
+                    ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.条码模块);
 
                     this.settingItem = new sysSettingSerialPortBase(this.Controls, "条码模块串口参数设置", ispci, frmSysSettings_Click);
                     this.settingItem.addControls();
@@ -144,7 +145,7 @@ namespace LogisTechBase
                 }
                 if (node.Name == "常用设置")
                 {
-                    ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.常用串口设置);
+                    ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.常用串口设置);
 
                     this.settingItem = new sysSettingSerialPortBase(this.Controls, "常用参数设置", ispci, frmSysSettings_Click);
                     this.settingItem.addControls();

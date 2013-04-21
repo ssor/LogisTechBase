@@ -35,13 +35,14 @@
             this.txtPort = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelStatus = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnSerialPortConfig = new System.Windows.Forms.Button();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.matrixCircularProgressControl1 = new LogisTechBase.MatrixCircularProgressControl();
+            this.txtLog = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -55,16 +56,17 @@
             // 
             // txtIP
             // 
+            this.txtIP.Enabled = false;
             this.txtIP.Location = new System.Drawing.Point(22, 47);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(195, 21);
+            this.txtIP.Size = new System.Drawing.Size(118, 21);
             this.txtIP.TabIndex = 47;
             this.txtIP.Text = "192.168.1.100";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 85);
+            this.label3.Location = new System.Drawing.Point(144, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 49;
@@ -72,19 +74,20 @@
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(21, 104);
+            this.txtPort.Enabled = false;
+            this.txtPort.Location = new System.Drawing.Point(146, 47);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(196, 21);
+            this.txtPort.Size = new System.Drawing.Size(88, 21);
             this.txtPort.TabIndex = 50;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(278, 45);
+            this.button1.Location = new System.Drawing.Point(279, 79);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 29);
             this.button1.TabIndex = 51;
-            this.button1.Text = "打开";
+            this.button1.Text = "开始(&O)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -94,21 +97,12 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtPort);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(10, 11);
+            this.groupBox1.Location = new System.Drawing.Point(13, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(247, 349);
+            this.groupBox1.Size = new System.Drawing.Size(246, 88);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "服务器参数：";
-            // 
-            // labelStatus
-            // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(8, 15);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(41, 12);
-            this.labelStatus.TabIndex = 54;
-            this.labelStatus.Text = "status";
             // 
             // button2
             // 
@@ -116,45 +110,80 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 29);
             this.button2.TabIndex = 55;
-            this.button2.Text = "退出";
+            this.button2.Text = "退出(&X)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(265, 350);
+            this.groupBox2.Location = new System.Drawing.Point(265, 360);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(125, 10);
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             // 
-            // groupBox3
+            // txtid
             // 
-            this.groupBox3.Controls.Add(this.labelStatus);
-            this.groupBox3.Location = new System.Drawing.Point(-2, 423);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(421, 41);
-            this.groupBox3.TabIndex = 56;
-            this.groupBox3.TabStop = false;
+            this.txtid.Location = new System.Drawing.Point(13, 383);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(153, 21);
+            this.txtid.TabIndex = 57;
+            this.txtid.Text = "000000000000000000003016";
+            this.txtid.Visible = false;
             // 
-            // btnSerialPortConfig
+            // button3
             // 
-            this.btnSerialPortConfig.Location = new System.Drawing.Point(278, 99);
-            this.btnSerialPortConfig.Name = "btnSerialPortConfig";
-            this.btnSerialPortConfig.Size = new System.Drawing.Size(87, 29);
-            this.btnSerialPortConfig.TabIndex = 57;
-            this.btnSerialPortConfig.Text = "串口设置";
-            this.btnSerialPortConfig.UseVisualStyleBackColor = true;
-            this.btnSerialPortConfig.Click += new System.EventHandler(this.btnSerialPortConfig_Click);
+            this.button3.Location = new System.Drawing.Point(172, 383);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 29);
+            this.button3.TabIndex = 55;
+            this.button3.Text = "测试";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // matrixCircularProgressControl1
+            // 
+            this.matrixCircularProgressControl1.BackColor = System.Drawing.Color.Transparent;
+            this.matrixCircularProgressControl1.Interval = 60;
+            this.matrixCircularProgressControl1.Location = new System.Drawing.Point(292, 12);
+            this.matrixCircularProgressControl1.MinimumSize = new System.Drawing.Size(28, 28);
+            this.matrixCircularProgressControl1.Name = "matrixCircularProgressControl1";
+            this.matrixCircularProgressControl1.Rotation = LogisTechBase.MatrixCircularProgressControl.Direction.CLOCKWISE;
+            this.matrixCircularProgressControl1.Size = new System.Drawing.Size(64, 66);
+            this.matrixCircularProgressControl1.StartAngle = 270F;
+            this.matrixCircularProgressControl1.TabIndex = 58;
+            this.matrixCircularProgressControl1.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
+            this.matrixCircularProgressControl1.Load += new System.EventHandler(this.matrixCircularProgressControl1_Load);
+            // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(13, 142);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(246, 227);
+            this.txtLog.TabIndex = 59;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 124);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "考勤记录：";
             // 
             // FrmRfidCheck_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 458);
-            this.Controls.Add(this.btnSerialPortConfig);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(383, 430);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtLog);
+            this.Controls.Add(this.matrixCircularProgressControl1);
+            this.Controls.Add(this.txtid);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -163,15 +192,13 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmRfidCheck_Client";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考勤学生端";
             this.Load += new System.EventHandler(this.FrmRfidCheck_Client_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,10 +210,12 @@
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnSerialPortConfig;
+        private System.Windows.Forms.TextBox txtid;
+        private System.Windows.Forms.Button button3;
+        private MatrixCircularProgressControl matrixCircularProgressControl1;
+        private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.Label label2;
     }
 }

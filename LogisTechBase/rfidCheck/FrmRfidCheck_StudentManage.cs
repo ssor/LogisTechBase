@@ -34,22 +34,51 @@ namespace LogisTechBase.rfidCheck
             this.parentForm = frm;
             return this.ShowDialog();
         }
+        List<Person> personList;
+
         private void ShowPerson()
         {
-            DataSet myDataSet = rfidCheck_CheckOn.GetPersonDataSet();
-            if (null==myDataSet)
-            {
-                return;
-            }
-            dataGridView1.DataSource = myDataSet.Tables[0];
-
-            int iNumberofStudents = myDataSet.Tables[0].Rows.Count;
+            this.personList = rfidCheck_CheckOn.GetPersonList();
+            int iNumberofStudents = personList.Count;
             this.groupBox2.Text = "学生列表 共有学生" + iNumberofStudents.ToString() + "名";
 
+
+            DataTable table = null;
+            if (this.dataGridView1.DataSource == null)
+            {
+                table = new DataTable();
+                table.Columns.Add("学号", typeof(string));
+                table.Columns.Add("姓名", typeof(string));
+                table.Columns.Add("班级", typeof(string));
+                table.Columns.Add("年级", typeof(string));
+                table.Columns.Add("电话", typeof(string));
+                table.Columns.Add("邮件", typeof(string));
+                table.Columns.Add("卡号", typeof(string));
+            }
+            else
+            {
+                table = (DataTable)this.dataGridView1.DataSource;
+            }
+            table.Rows.Clear();
+
+            for (int j = 0; j < this.personList.Count; j++)
+            {
+                table.Rows.Add(new object[]{
+                    this.personList[j].id_num,
+                    this.personList[j].name,
+                    this.personList[j].bj,
+                    this.personList[j].nj,
+                    this.personList[j].telephone,
+                    this.personList[j].email,
+                    this.personList[j].epc
+                });
+            }
+            dataGridView1.DataSource = table;
             this.dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             int headerW = this.dataGridView1.RowHeadersWidth;
             int columnsW = 0;
             DataGridViewColumnCollection columns = this.dataGridView1.Columns;
+            columns[0].Width = 100;
             for (int i = 0; i < columns.Count; i++)
             {
                 columnsW += columns[i].Width;
@@ -57,12 +86,38 @@ namespace LogisTechBase.rfidCheck
             if (columnsW + headerW < this.dataGridView1.Width)
             {
                 int leftTotalWidht = this.dataGridView1.Width - columnsW - headerW;
-                int eachColumnAddedWidth = leftTotalWidht / columns.Count;
-                for (int i = 0; i < columns.Count; i++)
+                int eachColumnAddedWidth = leftTotalWidht / (columns.Count - 1);
+                for (int i = 1; i < columns.Count; i++)
                 {
                     columns[i].Width += eachColumnAddedWidth;
                 }
             }
+            //DataSet myDataSet = rfidCheck_CheckOn.GetPersonDataSet();
+            //if (null==myDataSet)
+            //{
+            //    return;
+            //}
+            //dataGridView1.DataSource = myDataSet.Tables[0];
+            //DataTable dt = nsConfigDB.ConfigDB.getTable(Program.personTableName);
+            //this.dataGridView1.DataSource = dt;
+
+            //this.dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            //int headerW = this.dataGridView1.RowHeadersWidth;
+            //int columnsW = 0;
+            //DataGridViewColumnCollection columns = this.dataGridView1.Columns;
+            //for (int i = 0; i < columns.Count; i++)
+            //{
+            //    columnsW += columns[i].Width;
+            //}
+            //if (columnsW + headerW < this.dataGridView1.Width)
+            //{
+            //    int leftTotalWidht = this.dataGridView1.Width - columnsW - headerW;
+            //    int eachColumnAddedWidth = leftTotalWidht / columns.Count;
+            //    for (int i = 0; i < columns.Count; i++)
+            //    {
+            //        columns[i].Width += eachColumnAddedWidth;
+            //    }
+            //}
             /* 
             
             dataGridView1.Columns[0].HeaderText = "学号";
@@ -100,13 +155,21 @@ namespace LogisTechBase.rfidCheck
 
             if (writeData)
             {
-                rfidCheck_CheckOn.PersonAdd(new Person(txtId.Text,
-                                                        txtName.Text,
-                                                        txtTel.Text,
-                                                        txtMail.Text,
-                                                        txtbj.Text,
-                                                        txtnj.Text,
-                                                        null));
+                //rfidCheck_CheckOn.PersonAdd(new Person(txtId.Text,
+                //                                        txtName.Text,
+                //                                        txtTel.Text,
+                //                                        txtMail.Text,
+                //                                        txtbj.Text,
+                //                                        txtnj.Text,
+                //                                        null));
+                nsConfigDB.ConfigDB.saveConfig(Program.personTableName, txtId.Text,
+                            new string[] { txtName.Text,
+                                            txtnj.Text,
+                                            txtbj.Text,
+                                            txtTel.Text,
+                                            txtMail.Text,
+                                            string.Empty});
+
 
                 MessageBox.Show("学号为" + txtId.Text +
                     "的学生新增完成!");
@@ -122,13 +185,20 @@ namespace LogisTechBase.rfidCheck
         {
             DataSet myDataSet = new DataSet();
             bool bUpdated = false;
-            bUpdated = rfidCheck_CheckOn.PersonUpdate(new Person(txtId.Text,
-                                                                 txtName.Text,
-                                                                 txtTel.Text,
-                                                                 txtMail.Text,
-                                                                 txtbj.Text,
-                                                                 txtnj.Text,
-                                                                 null));
+            bUpdated = nsConfigDB.ConfigDB.saveConfig(Program.personTableName, txtId.Text,
+               new string[] { txtName.Text,
+                                            txtnj.Text,
+                                            txtbj.Text,
+                                            txtTel.Text,
+                                            txtMail.Text,
+                                            string.Empty});
+            //bUpdated = rfidCheck_CheckOn.PersonUpdate(new Person(txtId.Text,
+            //                                                     txtName.Text,
+            //                                                     txtTel.Text,
+            //                                                     txtMail.Text,
+            //                                                     txtbj.Text,
+            //                                                     txtnj.Text,
+            //                                                     null));
             this.bRefreshParentForm = true;
             if (bUpdated)
             {
@@ -141,7 +211,7 @@ namespace LogisTechBase.rfidCheck
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string message = "确定要删除学号为【"+txtId.Text+"】的学生记录吗？";
+            string message = "确定要删除学号为【" + txtId.Text + "】的学生记录吗？";
             string caption = "删除确认";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
@@ -156,23 +226,21 @@ namespace LogisTechBase.rfidCheck
                 this.bRefreshParentForm = true;
 
                 bool bDeleted = false;
-                bDeleted = rfidCheck_CheckOn.PersonDelete(new Person(txtId.Text,
-                                                                    txtName.Text,
-                                                                    txtTel.Text,
-                                                                    txtMail.Text,
-                                                                    txtbj.Text,
-                                                                    txtnj.Text,
-                                                                    null));
+                bDeleted = nsConfigDB.ConfigDB.deleConfig(Program.personTableName, this.txtId.Text);
+                //bDeleted = rfidCheck_CheckOn.PersonDelete(new Person(txtId.Text,
+                //                                                    txtName.Text,
+                //                                                    txtTel.Text,
+                //                                                    txtMail.Text,
+                //                                                    txtbj.Text,
+                //                                                    txtnj.Text,
+                //                                                    null));
                 if (bDeleted)
                 {
                     ShowPerson();
+                    MessageBox.Show("学号" + txtId.Text +"已经删除完成!!");
                     SetLabelContent();
-                    MessageBox.Show("学号" + txtId.Text +
-                    "已经删除完成!!");
                 }
-
             }
-
 
         }
         void SetLabelContent()

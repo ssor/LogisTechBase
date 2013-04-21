@@ -31,77 +31,55 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRfidCheck_Server));
             this.btn_stopserver = new System.Windows.Forms.Button();
             this.btn_startserver = new System.Windows.Forms.Button();
-            this.btnReadRfid = new System.Windows.Forms.Button();
-            this.btnStopRfidCheck = new System.Windows.Forms.Button();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labelStatus = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSerialPortConfig = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblUncheckedCount = new System.Windows.Forms.Label();
+            this.lblCheckedCount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.btnResetCheckRecord = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_stopserver
             // 
-            this.btn_stopserver.Location = new System.Drawing.Point(6, 68);
+            this.btn_stopserver.Location = new System.Drawing.Point(428, 76);
             this.btn_stopserver.Name = "btn_stopserver";
-            this.btn_stopserver.Size = new System.Drawing.Size(121, 34);
+            this.btn_stopserver.Size = new System.Drawing.Size(102, 30);
             this.btn_stopserver.TabIndex = 11;
-            this.btn_stopserver.Text = "停止";
+            this.btn_stopserver.Text = "停止(&T)";
             this.btn_stopserver.UseVisualStyleBackColor = true;
             this.btn_stopserver.Click += new System.EventHandler(this.btn_stopserver_Click_1);
             // 
             // btn_startserver
             // 
-            this.btn_startserver.Location = new System.Drawing.Point(6, 20);
+            this.btn_startserver.Location = new System.Drawing.Point(428, 29);
             this.btn_startserver.Name = "btn_startserver";
-            this.btn_startserver.Size = new System.Drawing.Size(121, 34);
+            this.btn_startserver.Size = new System.Drawing.Size(102, 30);
             this.btn_startserver.TabIndex = 10;
-            this.btn_startserver.Text = "启动";
+            this.btn_startserver.Text = "启动(&R)";
             this.btn_startserver.UseVisualStyleBackColor = true;
             this.btn_startserver.Click += new System.EventHandler(this.btn_startserver_Click);
             // 
-            // btnReadRfid
-            // 
-            this.btnReadRfid.Location = new System.Drawing.Point(6, 25);
-            this.btnReadRfid.Name = "btnReadRfid";
-            this.btnReadRfid.Size = new System.Drawing.Size(121, 34);
-            this.btnReadRfid.TabIndex = 15;
-            this.btnReadRfid.Text = "启动";
-            this.btnReadRfid.UseVisualStyleBackColor = true;
-            this.btnReadRfid.Click += new System.EventHandler(this.btnReadRfid_Click);
-            // 
-            // btnStopRfidCheck
-            // 
-            this.btnStopRfidCheck.Location = new System.Drawing.Point(6, 73);
-            this.btnStopRfidCheck.Name = "btnStopRfidCheck";
-            this.btnStopRfidCheck.Size = new System.Drawing.Size(121, 34);
-            this.btnStopRfidCheck.TabIndex = 15;
-            this.btnStopRfidCheck.Text = "停止";
-            this.btnStopRfidCheck.UseVisualStyleBackColor = true;
-            this.btnStopRfidCheck.Click += new System.EventHandler(this.btnStopRfidCheck_Click);
-            // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(179, 29);
+            this.txtPort.Location = new System.Drawing.Point(463, 414);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(84, 21);
+            this.txtPort.Size = new System.Drawing.Size(58, 21);
             this.txtPort.TabIndex = 36;
             this.txtPort.Text = "13000";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(143, 32);
+            this.label2.Location = new System.Drawing.Point(427, 417);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 37;
@@ -109,72 +87,33 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 17);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(383, 439);
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(383, 406);
             this.dataGridView1.TabIndex = 38;
-            // 
-            // labelStatus
-            // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelStatus.Location = new System.Drawing.Point(13, 535);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(71, 12);
-            this.labelStatus.TabIndex = 39;
-            this.labelStatus.Text = "labelStatus";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(592, 488);
+            this.button1.Location = new System.Drawing.Point(428, 507);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 29);
+            this.button1.Size = new System.Drawing.Size(102, 29);
             this.button1.TabIndex = 40;
-            this.button1.Text = "退出";
+            this.button1.Text = "退出(&X)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btn_stopserver);
-            this.groupBox1.Controls.Add(this.btn_startserver);
-            this.groupBox1.Controls.Add(this.txtPort);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(413, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 113);
-            this.groupBox1.TabIndex = 41;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "远程考勤服务";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnSerialPortConfig);
-            this.groupBox2.Controls.Add(this.btnStopRfidCheck);
-            this.groupBox2.Controls.Add(this.btnReadRfid);
-            this.groupBox2.Location = new System.Drawing.Point(413, 143);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(300, 113);
-            this.groupBox2.TabIndex = 42;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "本地RFID考勤";
-            // 
-            // btnSerialPortConfig
-            // 
-            this.btnSerialPortConfig.Location = new System.Drawing.Point(145, 30);
-            this.btnSerialPortConfig.Name = "btnSerialPortConfig";
-            this.btnSerialPortConfig.Size = new System.Drawing.Size(90, 24);
-            this.btnSerialPortConfig.TabIndex = 16;
-            this.btnSerialPortConfig.Text = "串口设置";
-            this.btnSerialPortConfig.UseVisualStyleBackColor = true;
-            this.btnSerialPortConfig.Click += new System.EventHandler(this.btnSerialPortConfig_Click);
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.lblUncheckedCount);
+            this.groupBox3.Controls.Add(this.lblCheckedCount);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
@@ -183,49 +122,104 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "已考勤人列表";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(270, 438);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 12);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "未考勤人数：";
+            // 
+            // lblUncheckedCount
+            // 
+            this.lblUncheckedCount.AutoSize = true;
+            this.lblUncheckedCount.Location = new System.Drawing.Point(349, 438);
+            this.lblUncheckedCount.Name = "lblUncheckedCount";
+            this.lblUncheckedCount.Size = new System.Drawing.Size(29, 12);
+            this.lblUncheckedCount.TabIndex = 45;
+            this.lblUncheckedCount.Text = "1111";
+            // 
+            // lblCheckedCount
+            // 
+            this.lblCheckedCount.AutoSize = true;
+            this.lblCheckedCount.Location = new System.Drawing.Point(81, 438);
+            this.lblCheckedCount.Name = "lblCheckedCount";
+            this.lblCheckedCount.Size = new System.Drawing.Size(29, 12);
+            this.lblCheckedCount.TabIndex = 45;
+            this.lblCheckedCount.Text = "1111";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 438);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "已考勤人数：";
+            // 
             // groupBox4
             // 
-            this.groupBox4.Location = new System.Drawing.Point(419, 465);
+            this.groupBox4.Location = new System.Drawing.Point(419, 466);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(294, 10);
             this.groupBox4.TabIndex = 44;
             this.groupBox4.TabStop = false;
             // 
-            // groupBox5
+            // labelStatus
             // 
-            this.groupBox5.Location = new System.Drawing.Point(1, 520);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(728, 10);
-            this.groupBox5.TabIndex = 44;
-            this.groupBox5.TabStop = false;
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Location = new System.Drawing.Point(2, 535);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(41, 12);
+            this.labelStatus.TabIndex = 45;
+            this.labelStatus.Text = "label1";
+            // 
+            // btnResetCheckRecord
+            // 
+            this.btnResetCheckRecord.Location = new System.Drawing.Point(428, 194);
+            this.btnResetCheckRecord.Name = "btnResetCheckRecord";
+            this.btnResetCheckRecord.Size = new System.Drawing.Size(102, 30);
+            this.btnResetCheckRecord.TabIndex = 46;
+            this.btnResetCheckRecord.Text = "考勤重置(&N)";
+            this.btnResetCheckRecord.UseVisualStyleBackColor = true;
+            this.btnResetCheckRecord.Click += new System.EventHandler(this.btnResetCheckRecord_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(429, 148);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(102, 30);
+            this.btnSave.TabIndex = 47;
+            this.btnSave.Text = "保存结果(&S)";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmRfidCheck_Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 553);
+            this.ClientSize = new System.Drawing.Size(554, 553);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnResetCheckRecord);
+            this.Controls.Add(this.btn_stopserver);
+            this.Controls.Add(this.btn_startserver);
             this.Controls.Add(this.labelStatus);
-            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.txtPort);
             this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmRfidCheck_Server";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考勤服务端";
-            this.Load += new System.EventHandler(this.FrmRfidCheck_Server_Load);
-            this.Shown += new System.EventHandler(this.FrmRfidCheck_Server_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,18 +231,18 @@
 
         private System.Windows.Forms.Button btn_stopserver;
         private System.Windows.Forms.Button btn_startserver;
-        private System.Windows.Forms.Button btnReadRfid;
-        private System.Windows.Forms.Button btnStopRfidCheck;
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnSerialPortConfig;
+        private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblUncheckedCount;
+        private System.Windows.Forms.Label lblCheckedCount;
+        private System.Windows.Forms.Button btnResetCheckRecord;
+        private System.Windows.Forms.Button btnSave;
     }
 }

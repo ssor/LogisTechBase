@@ -48,93 +48,96 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 236);
+            this.label7.Location = new System.Drawing.Point(16, 233);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 35;
-            this.label7.Text = "停止位";
+            this.label7.Text = "停止位：";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 185);
+            this.label8.Location = new System.Drawing.Point(16, 183);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 34;
-            this.label8.Text = "数据位";
+            this.label8.Text = "数据位：";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(16, 133);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 12);
+            this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 33;
-            this.label9.Text = "校验位";
+            this.label9.Text = "校验位：";
             // 
             // cmbStopBits
             // 
             this.cmbStopBits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStopBits.Enabled = false;
             this.cmbStopBits.FormattingEnabled = true;
             this.cmbStopBits.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cmbStopBits.Location = new System.Drawing.Point(18, 251);
+            this.cmbStopBits.Location = new System.Drawing.Point(79, 230);
             this.cmbStopBits.Name = "cmbStopBits";
-            this.cmbStopBits.Size = new System.Drawing.Size(144, 20);
+            this.cmbStopBits.Size = new System.Drawing.Size(172, 20);
             this.cmbStopBits.TabIndex = 32;
             // 
             // cmbParity
             // 
             this.cmbParity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbParity.Enabled = false;
             this.cmbParity.FormattingEnabled = true;
             this.cmbParity.Items.AddRange(new object[] {
             "None",
             "Even",
             "Odd"});
-            this.cmbParity.Location = new System.Drawing.Point(18, 148);
+            this.cmbParity.Location = new System.Drawing.Point(79, 129);
             this.cmbParity.Name = "cmbParity";
-            this.cmbParity.Size = new System.Drawing.Size(144, 20);
+            this.cmbParity.Size = new System.Drawing.Size(172, 20);
             this.cmbParity.TabIndex = 30;
             // 
             // cmbDataBits
             // 
+            this.cmbDataBits.Enabled = false;
             this.cmbDataBits.FormattingEnabled = true;
             this.cmbDataBits.Items.AddRange(new object[] {
             "7",
             "8",
             "9"});
-            this.cmbDataBits.Location = new System.Drawing.Point(18, 200);
+            this.cmbDataBits.Location = new System.Drawing.Point(79, 180);
             this.cmbDataBits.Name = "cmbDataBits";
-            this.cmbDataBits.Size = new System.Drawing.Size(144, 20);
+            this.cmbDataBits.Size = new System.Drawing.Size(172, 20);
             this.cmbDataBits.TabIndex = 31;
             // 
             // cmbPortName
             // 
             this.cmbPortName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPortName.FormattingEnabled = true;
-            this.cmbPortName.Location = new System.Drawing.Point(18, 43);
+            this.cmbPortName.Location = new System.Drawing.Point(79, 30);
             this.cmbPortName.Name = "cmbPortName";
-            this.cmbPortName.Size = new System.Drawing.Size(144, 20);
+            this.cmbPortName.Size = new System.Drawing.Size(172, 20);
             this.cmbPortName.TabIndex = 27;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 28);
+            this.label5.Location = new System.Drawing.Point(16, 33);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 26;
-            this.label5.Text = "名称";
+            this.label5.Text = "名称：";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 80);
+            this.label6.Location = new System.Drawing.Point(16, 83);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 29;
-            this.label6.Text = "波特率";
+            this.label6.Text = "波特率：";
             // 
             // cmbBaudRate
             // 
@@ -150,31 +153,33 @@
             "19200",
             "28800",
             "36000",
+            "38400",
             "57600",
             "115200"});
-            this.cmbBaudRate.Location = new System.Drawing.Point(18, 95);
+            this.cmbBaudRate.Location = new System.Drawing.Point(79, 78);
             this.cmbBaudRate.Name = "cmbBaudRate";
-            this.cmbBaudRate.Size = new System.Drawing.Size(144, 20);
+            this.cmbBaudRate.Size = new System.Drawing.Size(172, 20);
             this.cmbBaudRate.TabIndex = 28;
             // 
             // btnSaveConfig
             // 
-            this.btnSaveConfig.Location = new System.Drawing.Point(211, 52);
+            this.btnSaveConfig.Location = new System.Drawing.Point(257, 372);
             this.btnSaveConfig.Name = "btnSaveConfig";
-            this.btnSaveConfig.Size = new System.Drawing.Size(94, 23);
+            this.btnSaveConfig.Size = new System.Drawing.Size(94, 28);
             this.btnSaveConfig.TabIndex = 36;
-            this.btnSaveConfig.Text = "保存";
+            this.btnSaveConfig.Text = "确定(&O)";
             this.btnSaveConfig.UseVisualStyleBackColor = true;
             this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(211, 104);
+            this.btnCancel.Location = new System.Drawing.Point(65, 370);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(92, 23);
+            this.btnCancel.Size = new System.Drawing.Size(92, 30);
             this.btnCancel.TabIndex = 37;
-            this.btnCancel.Text = "取消";
+            this.btnCancel.Text = "取消(&A)";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // groupBox1
@@ -191,7 +196,7 @@
             this.groupBox1.Controls.Add(this.cmbParity);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(178, 306);
+            this.groupBox1.Size = new System.Drawing.Size(341, 332);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "串口参数设置";
@@ -200,7 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 334);
+            this.ClientSize = new System.Drawing.Size(365, 414);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSaveConfig);

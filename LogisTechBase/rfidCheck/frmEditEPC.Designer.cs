@@ -245,6 +245,7 @@
             this.btnSerialPortConfig.TabIndex = 52;
             this.btnSerialPortConfig.Text = "串口设置";
             this.btnSerialPortConfig.UseVisualStyleBackColor = true;
+            this.btnSerialPortConfig.Visible = false;
             this.btnSerialPortConfig.Click += new System.EventHandler(this.btnSerialPortConfig_Click);
             // 
             // frmEditEPC

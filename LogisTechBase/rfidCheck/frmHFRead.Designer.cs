@@ -41,6 +41,7 @@
             this.ckb15693 = new System.Windows.Forms.CheckBox();
             this.ckbTagit = new System.Windows.Forms.CheckBox();
             this.ProgressControl1 = new LogisTechBase.MatrixCircularProgressControl();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -105,6 +106,7 @@
             this.btnSerialPortConfig.TabIndex = 46;
             this.btnSerialPortConfig.Text = "串口设置";
             this.btnSerialPortConfig.UseVisualStyleBackColor = true;
+            this.btnSerialPortConfig.Visible = false;
             this.btnSerialPortConfig.Click += new System.EventHandler(this.btnSerialPortConfig_Click);
             // 
             // groupBox3
@@ -124,7 +126,7 @@
             this.ckb14443b.AutoSize = true;
             this.ckb14443b.Checked = true;
             this.ckb14443b.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb14443b.Location = new System.Drawing.Point(7, 87);
+            this.ckb14443b.Location = new System.Drawing.Point(7, 61);
             this.ckb14443b.Name = "ckb14443b";
             this.ckb14443b.Size = new System.Drawing.Size(84, 16);
             this.ckb14443b.TabIndex = 0;
@@ -136,7 +138,7 @@
             this.ckb14443a.AutoSize = true;
             this.ckb14443a.Checked = true;
             this.ckb14443a.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb14443a.Location = new System.Drawing.Point(7, 65);
+            this.ckb14443a.Location = new System.Drawing.Point(7, 39);
             this.ckb14443a.Name = "ckb14443a";
             this.ckb14443a.Size = new System.Drawing.Size(84, 16);
             this.ckb14443a.TabIndex = 0;
@@ -148,7 +150,7 @@
             this.ckb15693.AutoSize = true;
             this.ckb15693.Checked = true;
             this.ckb15693.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb15693.Location = new System.Drawing.Point(7, 43);
+            this.ckb15693.Location = new System.Drawing.Point(7, 17);
             this.ckb15693.Name = "ckb15693";
             this.ckb15693.Size = new System.Drawing.Size(78, 16);
             this.ckb15693.TabIndex = 0;
@@ -158,14 +160,13 @@
             // ckbTagit
             // 
             this.ckbTagit.AutoSize = true;
-            this.ckbTagit.Checked = true;
-            this.ckbTagit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbTagit.Location = new System.Drawing.Point(7, 21);
+            this.ckbTagit.Location = new System.Drawing.Point(8, 109);
             this.ckbTagit.Name = "ckbTagit";
             this.ckbTagit.Size = new System.Drawing.Size(84, 16);
             this.ckbTagit.TabIndex = 0;
             this.ckbTagit.Text = "TAG-IT协议";
             this.ckbTagit.UseVisualStyleBackColor = true;
+            this.ckbTagit.Visible = false;
             // 
             // ProgressControl1
             // 
@@ -180,11 +181,23 @@
             this.ProgressControl1.TabIndex = 52;
             this.ProgressControl1.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(283, 505);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 53;
+            this.button3.Text = "测试";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // frmHFRead
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 541);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.ProgressControl1);
             this.Controls.Add(this.btn_opencom);
             this.Controls.Add(this.button2);
@@ -222,5 +235,6 @@
         private System.Windows.Forms.CheckBox ckb14443a;
         private System.Windows.Forms.CheckBox ckb15693;
         private MatrixCircularProgressControl ProgressControl1;
+        private System.Windows.Forms.Button button3;
     }
 }

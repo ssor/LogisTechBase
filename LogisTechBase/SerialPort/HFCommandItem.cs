@@ -17,7 +17,7 @@ namespace LogisTechBase
         public static string 读取TAGIT协议标签 = "010B000304340050000000";
         Dictionary<string, string> _ItemDic = new Dictionary<string, string>();
         List<string> _keyWordsList = new List<string>();
-
+        
         public HFCommandItem()
         {
             _ItemDic.Add("查询读写器状态", 查询读写器状态);

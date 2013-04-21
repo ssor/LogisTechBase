@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
+using Config;
 
 namespace LogisTechBase
 {
@@ -48,7 +49,7 @@ namespace LogisTechBase
         {
             try
             {
-                string portname = serialPortConfigItem.GetItemValue("PortName");
+                string portname = serialPortConfigItem.GetItemValue(enumSerialPortConfigItem.串口名称);
                 //string portname = ConfigManager.GetItemValue("PortName");
                 if (null == portname)
                 {
@@ -59,7 +60,7 @@ namespace LogisTechBase
 
                     cmbPortName.SelectedIndex = cmbPortName.Items.IndexOf(portname);
                 }
-                string baudRate = serialPortConfigItem.GetItemValue("BaudRate");
+                string baudRate = serialPortConfigItem.GetItemValue(enumSerialPortConfigItem.波特率);
                 //string baudRate = ConfigManager.GetItemValue("BaudRate");
                 if (null != baudRate)
                 {
@@ -69,33 +70,36 @@ namespace LogisTechBase
                 {
                     cmbBaudRate.SelectedIndex = -1;
                 }
-                string parity = serialPortConfigItem.GetItemValue("Parity");
-                //string parity = ConfigManager.GetItemValue("Parity");
-                if (null != parity)
-                {
-                    cmbParity.SelectedIndex = cmbParity.Items.IndexOf(parity);
-                }else
-                {
-                    cmbParity.SelectedIndex = -1;
-                }
-                string stopbites = serialPortConfigItem.GetItemValue("StopBits");
-                //string stopbites = ConfigManager.GetItemValue("StopBits");
-                if (null != stopbites)
-                {
-                    cmbStopBits.SelectedIndex = cmbStopBits.Items.IndexOf(stopbites);
-                }else
-                {
-                    cmbStopBits.SelectedIndex = -1;
-                }
-                string databits = serialPortConfigItem.GetItemValue("DataBits");
-                //string databits = ConfigManager.GetItemValue("DataBits");
-                if (null != databits)
-                {
-                    cmbDataBits.SelectedIndex = cmbDataBits.Items.IndexOf(databits);
-                }else
-                {
-                    cmbDataBits.SelectedIndex = -1;
-                }
+                cmbParity.SelectedIndex = 0;
+                cmbStopBits.SelectedIndex = 0;
+                cmbDataBits.SelectedIndex = 1;
+                //string parity = serialPortConfigItem.GetItemValue("Parity");
+                ////string parity = ConfigManager.GetItemValue("Parity");
+                //if (null != parity)
+                //{
+                //    cmbParity.SelectedIndex = cmbParity.Items.IndexOf(parity);
+                //}else
+                //{
+                //    cmbParity.SelectedIndex = -1;
+                //}
+                //string stopbites = serialPortConfigItem.GetItemValue("StopBits");
+                ////string stopbites = ConfigManager.GetItemValue("StopBits");
+                //if (null != stopbites)
+                //{
+                //    cmbStopBits.SelectedIndex = cmbStopBits.Items.IndexOf(stopbites);
+                //}else
+                //{
+                //    cmbStopBits.SelectedIndex = -1;
+                //}
+                //string databits = serialPortConfigItem.GetItemValue("DataBits");
+                ////string databits = ConfigManager.GetItemValue("DataBits");
+                //if (null != databits)
+                //{
+                //    cmbDataBits.SelectedIndex = cmbDataBits.Items.IndexOf(databits);
+                //}else
+                //{
+                //    cmbDataBits.SelectedIndex = -1;
+                //}
             }
             catch (System.Exception ex)
             {
@@ -110,11 +114,10 @@ namespace LogisTechBase
             //                                 cmbParity.Text,
             //                                 cmbDataBits.Text,
             //                                 cmbStopBits.Text);
-            this.serialPortConfigItem.SaveConfigItem(cmbPortName.Text,
-                                             cmbBaudRate.Text,
-                                             cmbParity.Text,
-                                             cmbDataBits.Text,
-                                             cmbStopBits.Text);
+            ((SerialPortConfigItem)(this.serialPortConfigItem)).SpName = cmbPortName.Text;
+            ((SerialPortConfigItem)(this.serialPortConfigItem)).SpBaudRate = cmbBaudRate.Text;
+
+            ConfigManager.SaveConfigItem(serialPortConfigItem);
 
             this.Close();
         }

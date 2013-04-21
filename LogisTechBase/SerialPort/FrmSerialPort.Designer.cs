@@ -64,7 +64,7 @@
             this.btn_opencom.Name = "btn_opencom";
             this.btn_opencom.Size = new System.Drawing.Size(85, 29);
             this.btn_opencom.TabIndex = 19;
-            this.btn_opencom.Text = "打开串口";
+            this.btn_opencom.Text = "打开串口(&O)";
             this.btn_opencom.UseVisualStyleBackColor = true;
             this.btn_opencom.Click += new System.EventHandler(this.btn_opencom_Click);
             // 
@@ -74,7 +74,7 @@
             this.btn_closecom.Name = "btn_closecom";
             this.btn_closecom.Size = new System.Drawing.Size(85, 29);
             this.btn_closecom.TabIndex = 20;
-            this.btn_closecom.Text = "关闭串口";
+            this.btn_closecom.Text = "关闭串口(&C)";
             this.btn_closecom.UseVisualStyleBackColor = true;
             this.btn_closecom.Click += new System.EventHandler(this.btn_closecom_Click);
             // 
@@ -97,11 +97,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(493, 126);
+            this.button1.Location = new System.Drawing.Point(487, 126);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(81, 23);
             this.button1.TabIndex = 23;
-            this.button1.Text = "发送";
+            this.button1.Text = "发送(&S)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -111,7 +111,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 29);
             this.button2.TabIndex = 24;
-            this.button2.Text = "退出";
+            this.button2.Text = "退出(&X)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -137,11 +137,11 @@
             // 
             // btn_RtxtClear
             // 
-            this.btn_RtxtClear.Location = new System.Drawing.Point(495, 222);
+            this.btn_RtxtClear.Location = new System.Drawing.Point(487, 222);
             this.btn_RtxtClear.Name = "btn_RtxtClear";
-            this.btn_RtxtClear.Size = new System.Drawing.Size(75, 23);
+            this.btn_RtxtClear.Size = new System.Drawing.Size(83, 23);
             this.btn_RtxtClear.TabIndex = 28;
-            this.btn_RtxtClear.Text = "清空显示";
+            this.btn_RtxtClear.Text = "清空显示(&C)";
             this.btn_RtxtClear.UseVisualStyleBackColor = true;
             this.btn_RtxtClear.Click += new System.EventHandler(this.btn_RtxtClear_Click);
             // 
@@ -287,6 +287,7 @@
             this.btnSerialPortConfig.TabIndex = 37;
             this.btnSerialPortConfig.Text = "串口设置";
             this.btnSerialPortConfig.UseVisualStyleBackColor = true;
+            this.btnSerialPortConfig.Visible = false;
             this.btnSerialPortConfig.Click += new System.EventHandler(this.btnSerialPortConfig_Click);
             // 
             // FrmSerialPort

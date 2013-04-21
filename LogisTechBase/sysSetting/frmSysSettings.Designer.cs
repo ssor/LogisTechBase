@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSysSettings));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,7 +42,6 @@
             this.treeView1.ItemHeight = 20;
             this.treeView1.Location = new System.Drawing.Point(12, 12);
             this.treeView1.Name = "treeView1";
-
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.Size = new System.Drawing.Size(206, 448);
             this.treeView1.TabIndex = 0;
@@ -66,7 +64,7 @@
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(95, 30);
             this.btnOk.TabIndex = 2;
-            this.btnOk.Text = "应用";
+            this.btnOk.Text = "应用(&C)";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -77,7 +75,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(95, 30);
             this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "退出";
+            this.btnCancel.Text = "退出(&Q)";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 

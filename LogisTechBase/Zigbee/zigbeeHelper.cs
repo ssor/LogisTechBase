@@ -65,6 +65,9 @@ namespace LogisTechBase
                     , BytesToHexString(maxbuf.ToArray())));
                 while (maxbuf.Count > 0)//只要还有数据就不停的查找
                 {
+                    Debug.WriteLine(
+                    	string.Format("ZigbeeHelper.Parse  ->  = {0}"
+                    	, "while loop"));
                     //****************************************************************************
                     // 从整个数据源中找出一段命令
                     int nEndIndex = maxbuf.FindIndex(0, IsFF);
@@ -74,10 +77,13 @@ namespace LogisTechBase
                     }
                     while (nEndIndex != -1)
                     {
+                        Debug.WriteLine(
+    string.Format("ZigbeeHelper.Parse  -> while loop 2 = {0}   {1}"
+    , nEndIndex.ToString(),maxbuf.Count.ToString()));// 22 23
                         if (nEndIndex > 0)// 此时找到的是形如 xxxFFFF 的数组
                         {
                             if (nEndIndex + 1 < maxbuf.Count &&
-                              IsFF(maxbuf[nEndIndex + 1]))
+                              IsFF(maxbuf[nEndIndex + 1]))//如果这个ff的后面还是ff，那说明这真是结尾
                             {
                                 if ((nEndIndex >= 22))// 往前数22 是标识 00 的包头
                                 {
@@ -93,10 +99,10 @@ namespace LogisTechBase
                                 return;//没找到一个完整的命令字符串，无法继续处理，直接返回
                             }
                         }
-                        //else
-                        //{
-                        //    return;//没找到一个完整的命令字符串，无法继续处理，直接返回
-                        //}
+                        else//当 nEndIndex = 22 maxbuf.Count = 23时，会死循环，必须返回
+                        {
+                            return;//没找到一个完整的命令字符串，无法继续处理，直接返回
+                        }
                     }
                     //*********************************************************************************
                     List<byte> bytesCmd = maxbuf.GetRange(nEndIndex - 22, 24);

@@ -180,7 +180,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 28);
             this.button1.TabIndex = 43;
-            this.button1.Text = "开始";
+            this.button1.Text = "开始(&S)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -307,7 +307,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 28);
             this.button2.TabIndex = 46;
-            this.button2.Text = "退出";
+            this.button2.Text = "退出(&X)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -376,9 +376,9 @@
             // 
             this.btnClear.Location = new System.Drawing.Point(554, 210);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(63, 23);
             this.btnClear.TabIndex = 75;
-            this.btnClear.Text = "清空数据";
+            this.btnClear.Text = "清空(&C)";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -454,6 +454,7 @@
             this.btnSerialPortConfig.TabIndex = 78;
             this.btnSerialPortConfig.Text = "串口设置";
             this.btnSerialPortConfig.UseVisualStyleBackColor = true;
+            this.btnSerialPortConfig.Visible = false;
             this.btnSerialPortConfig.Click += new System.EventHandler(this.btnSerialPortConfig_Click);
             // 
             // ProgressControl1

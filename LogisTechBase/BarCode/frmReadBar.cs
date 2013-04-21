@@ -7,13 +7,14 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Config;
 
 namespace LogisTechBase
 {
     public partial class frmReadBar : Form
     {
         private System.IO.Ports.SerialPort comport = new System.IO.Ports.SerialPort();//定义串口
-        ISerialPortConfigItem ispci = SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.条码模块);
+        ISerialPortConfigItem ispci = ConfigManager.GetConfigItem(SerialPortConfigItemName.条码模块);
         private bool bClosing = false;
         bool isPortOpen = false;
         bool isReadingBarcode = false;

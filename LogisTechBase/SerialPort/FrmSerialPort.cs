@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Config;
 
 namespace LogisTechBase
 {

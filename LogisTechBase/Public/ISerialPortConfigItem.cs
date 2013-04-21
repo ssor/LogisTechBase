@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LogisTechBase
+namespace Config
 {
     public interface ISerialPortConfigItem
     {
-        string GetItemValue(string itemName);
-        //void SaveConfigItem();
-        void SaveConfigItem(
-            string portName, string baudRate, 
-            string parity, string dataBits, string stopBits);
+        string GetItemValue(enumSerialPortConfigItem itemName);
+
+        bool SaveConfigItem(string configFile);
+
+        bool SaveConfigItem(string configFile, string portName, string baudRate);
     }
 }

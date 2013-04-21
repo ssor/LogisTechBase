@@ -127,7 +127,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(111, 34);
             this.btnAdd.TabIndex = 10;
-            this.btnAdd.Text = "增加";
+            this.btnAdd.Text = "增加(&A)";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -137,7 +137,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(111, 34);
             this.btnUpdate.TabIndex = 11;
-            this.btnUpdate.Text = "修改";
+            this.btnUpdate.Text = "修改(&U)";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -147,12 +147,13 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(111, 34);
             this.btnDelete.TabIndex = 10;
-            this.btnDelete.Text = "删除";
+            this.btnDelete.Text = "删除(&D)";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(6, 17);
@@ -160,6 +161,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(706, 305);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -170,7 +172,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 34);
             this.button1.TabIndex = 12;
-            this.button1.Text = "退出";
+            this.button1.Text = "退出(&X)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

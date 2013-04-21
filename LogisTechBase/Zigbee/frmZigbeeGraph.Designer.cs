@@ -48,9 +48,9 @@
             // 
             this.btnOpenPort.Location = new System.Drawing.Point(685, 124);
             this.btnOpenPort.Name = "btnOpenPort";
-            this.btnOpenPort.Size = new System.Drawing.Size(81, 29);
+            this.btnOpenPort.Size = new System.Drawing.Size(96, 29);
             this.btnOpenPort.TabIndex = 0;
-            this.btnOpenPort.Text = "打开串口";
+            this.btnOpenPort.Text = "打开串口(&O)";
             this.btnOpenPort.UseVisualStyleBackColor = true;
             this.btnOpenPort.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -58,9 +58,9 @@
             // 
             this.btnClosePort.Location = new System.Drawing.Point(685, 167);
             this.btnClosePort.Name = "btnClosePort";
-            this.btnClosePort.Size = new System.Drawing.Size(81, 29);
+            this.btnClosePort.Size = new System.Drawing.Size(96, 29);
             this.btnClosePort.TabIndex = 1;
-            this.btnClosePort.Text = "关闭串口";
+            this.btnClosePort.Text = "关闭串口(&C)";
             this.btnClosePort.UseVisualStyleBackColor = true;
             this.btnClosePort.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -131,11 +131,11 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(685, 520);
+            this.btnQuit.Location = new System.Drawing.Point(685, 527);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(81, 29);
+            this.btnQuit.Size = new System.Drawing.Size(96, 29);
             this.btnQuit.TabIndex = 6;
-            this.btnQuit.Text = "退出";
+            this.btnQuit.Text = "退出(&X)";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
@@ -147,6 +147,7 @@
             this.btnPortConfig.TabIndex = 8;
             this.btnPortConfig.Text = "串口设置";
             this.btnPortConfig.UseVisualStyleBackColor = true;
+            this.btnPortConfig.Visible = false;
             this.btnPortConfig.Click += new System.EventHandler(this.btnPortConfig_Click);
             // 
             // groupBox3

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO.Ports;
+using Config;
 
 namespace LogisTechBase
 {
@@ -82,6 +83,8 @@ namespace LogisTechBase
             this.cmbStopBits.Name = "cmbStopBits";
             this.cmbStopBits.Size = new System.Drawing.Size(144, 20);
             this.cmbStopBits.TabIndex = 32;
+            this.cmbStopBits.SelectedIndex = 0;
+            this.cmbStopBits.Enabled = false;
             // 
             // cmbBaudRate
             // 
@@ -122,6 +125,7 @@ namespace LogisTechBase
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 35;
             this.label7.Text = "停止位";
+
             // 
             // label5
             // 
@@ -171,6 +175,8 @@ namespace LogisTechBase
             this.cmbDataBits.Name = "cmbDataBits";
             this.cmbDataBits.Size = new System.Drawing.Size(144, 20);
             this.cmbDataBits.TabIndex = 31;
+            this.cmbDataBits.SelectedIndex = 1;
+            this.cmbDataBits.Enabled = false;
             // 
             // cmbParity
             // 
@@ -184,6 +190,8 @@ namespace LogisTechBase
             this.cmbParity.Name = "cmbParity";
             this.cmbParity.Size = new System.Drawing.Size(144, 20);
             this.cmbParity.TabIndex = 30;
+            this.cmbParity.SelectedIndex = 0;
+            this.cmbParity.Enabled = false;
         }
 
         void SelectedIndexChanged(object sender, EventArgs e)
@@ -221,11 +229,14 @@ namespace LogisTechBase
 
         void ISysSettingItem.saveChanges()
         {
-            this.serialPortConfigItem.SaveConfigItem(cmbPortName.Text,
-                                 cmbBaudRate.Text,
-                                 cmbParity.Text,
-                                 cmbDataBits.Text,
-                                 cmbStopBits.Text);
+            ((SerialPortConfigItem)(this.serialPortConfigItem)).SpName = cmbPortName.Text;
+            ((SerialPortConfigItem)(this.serialPortConfigItem)).SpBaudRate = cmbBaudRate.Text;
+            ConfigManager.SaveConfigItem(this.serialPortConfigItem);
+            //this.serialPortConfigItem.SaveConfigItem(cmbPortName.Text,
+            //                     cmbBaudRate.Text,
+            //                     cmbParity.Text,
+            //                     cmbDataBits.Text,
+            //                     cmbStopBits.Text);
         }
 
         #endregion
@@ -237,7 +248,7 @@ namespace LogisTechBase
             cmbPortName.Items.AddRange(ports);
             try
             {
-                string portname = serialPortConfigItem.GetItemValue("PortName");
+                string portname = serialPortConfigItem.GetItemValue(enumSerialPortConfigItem.串口名称);
                 //string portname = ConfigManager.GetItemValue("PortName");
                 if (null == portname)
                 {
@@ -248,7 +259,7 @@ namespace LogisTechBase
 
                     cmbPortName.SelectedIndex = cmbPortName.Items.IndexOf(portname);
                 }
-                string baudRate = serialPortConfigItem.GetItemValue("BaudRate");
+                string baudRate = serialPortConfigItem.GetItemValue(enumSerialPortConfigItem.波特率);
                 //string baudRate = ConfigManager.GetItemValue("BaudRate");
                 if (null != baudRate)
                 {
@@ -258,36 +269,36 @@ namespace LogisTechBase
                 {
                     cmbBaudRate.SelectedIndex = -1;
                 }
-                string parity = serialPortConfigItem.GetItemValue("Parity");
-                //string parity = ConfigManager.GetItemValue("Parity");
-                if (null != parity)
-                {
-                    cmbParity.SelectedIndex = cmbParity.Items.IndexOf(parity);
-                }
-                else
-                {
-                    cmbParity.SelectedIndex = -1;
-                }
-                string stopbites = serialPortConfigItem.GetItemValue("StopBits");
-                //string stopbites = ConfigManager.GetItemValue("StopBits");
-                if (null != stopbites)
-                {
-                    cmbStopBits.SelectedIndex = cmbStopBits.Items.IndexOf(stopbites);
-                }
-                else
-                {
-                    cmbStopBits.SelectedIndex = -1;
-                }
-                string databits = serialPortConfigItem.GetItemValue("DataBits");
-                //string databits = ConfigManager.GetItemValue("DataBits");
-                if (null != databits)
-                {
-                    cmbDataBits.SelectedIndex = cmbDataBits.Items.IndexOf(databits);
-                }
-                else
-                {
-                    cmbDataBits.SelectedIndex = -1;
-                }
+                //string parity = serialPortConfigItem.GetItemValue("Parity");
+                ////string parity = ConfigManager.GetItemValue("Parity");
+                //if (null != parity)
+                //{
+                //    cmbParity.SelectedIndex = cmbParity.Items.IndexOf(parity);
+                //}
+                //else
+                //{
+                //    cmbParity.SelectedIndex = -1;
+                //}
+                //string stopbites = serialPortConfigItem.GetItemValue("StopBits");
+                ////string stopbites = ConfigManager.GetItemValue("StopBits");
+                //if (null != stopbites)
+                //{
+                //    cmbStopBits.SelectedIndex = cmbStopBits.Items.IndexOf(stopbites);
+                //}
+                //else
+                //{
+                //    cmbStopBits.SelectedIndex = -1;
+                //}
+                //string databits = serialPortConfigItem.GetItemValue("DataBits");
+                ////string databits = ConfigManager.GetItemValue("DataBits");
+                //if (null != databits)
+                //{
+                //    cmbDataBits.SelectedIndex = cmbDataBits.Items.IndexOf(databits);
+                //}
+                //else
+                //{
+                //    cmbDataBits.SelectedIndex = -1;
+                //}
             }
             catch (System.Exception ex)
             {
