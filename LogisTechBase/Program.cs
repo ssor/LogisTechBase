@@ -1,5 +1,5 @@
-﻿//#define teacher
-#define student
+﻿#define teacher
+//#define student
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
